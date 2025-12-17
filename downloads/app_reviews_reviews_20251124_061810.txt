@@ -1,0 +1,45 @@
+Review 1:
+Két napja frissült Androidon, azóta nem lehet megnyitni, összeomlik
+
+Sentiment: Negative (score=-0.500)
+
+Reply:
+Sajnáljuk, hogy a frissítés után problémákat tapasztaltál azzal a szolgáltatásunkkal, amely az Androidon fut! Köszönjük, hogy ezt megosztod velünk, és segítünk mindenben, hogy vissza térts a rendes működéshez. Kérjük, írj vissza vagy kontaktál bennünket, hogy segítségünket elérhesd.
+------------------------------------------------------------
+
+Review 2:
+Követi, milyen zenéket szeretek hallgatni, annak alapján segít újakat felfedezni. Ugyan akkor el is csábít mas irányba, felfedező körutakra. Mindent megtalálok, amit szeretnék!
+
+Sentiment: Positive (score=0.800)
+
+Reply:
+Örömmel hallottunk, hogy az alkalmazásunk segített abban, hogy felfedezned új zenéket, de legalábbis elcsábítson új zenei irányok felé! Az új felfedezésekért köszönjük, és reméljük, hamarosan újabb jó zenéket találsz vele.
+------------------------------------------------------------
+
+Review 3:
+már azt se engedi h a zeneimet ugy hallgassam ahogy en szeretnem mert "fizess elo a premiumra" nagyon idegesito ez is el lett rontva...
+
+Sentiment: Negative (score=-0.500)
+
+Reply:
+Értem, hogy az utasított megoldások után ez az ügyet sem sikerült megoldanunk. Megígérjük, hogy vizsgálni fogjuk, hogy mi lehetett a probléma, és lehetőséget teremtünk az Ön számára a probléma korrigálására.
+------------------------------------------------------------
+
+Review 4:
+szuper!!!
+
+Sentiment: Positive (score=0.800)
+
+Reply:
+"Szerénkösen köszönjük a szépre vonatkozó véleményt számtól! A folyamatos javításunk és fejlesztésünk célja az, hogy mindenkinek nyugodt és kellemes élményt biztosítsunk."
+------------------------------------------------------------
+
+Review 5:
+nov.18 óta nekem sem jó az alkalmazás. Ahogy megnyitom, magától bezár. Előfizetésem van, de ez így ebben a formában kiábrándító.
+
+Sentiment: Negative (score=-0.500)
+
+Reply:
+"Köszönjük, hogy hozzászóltak tapasztalatukról! Mi tettük meg mindent, hogy megszüntessük a probléma okait és javítsunk az alkalmazás stabilitásán. Bővebb információt kapnak majd rólunk, ha visszaadjuk az ügyfélszolgálaton."
+------------------------------------------------------------
+

@@ -1,0 +1,94 @@
+Review 1:
+not cast button
+
+Sentiment: Negative (score=-0.500)
+
+Reply:
+La funcionalidad de "Pausar Reproducción" parece no funcionar correctamente en tu dispositivo. Estamos investigando el problema y trataremos de solucionarlo lo antes posible. En breve te comunicaremos sobre las acciones que se han tomado.
+------------------------------------------------------------
+
+Review 2:
+Spend my free time watching movie with this app make me enjoy every moments. Searching my favourite movie heal my innerchild.I used this app to spend my time with my lovely family. Those moments are truly precious for me.
+
+Sentiment: Positive (score=0.800)
+
+Reply:
+Terima Kasih atas umpan balasan positif Anda. Kami senang Anda menikmati menggunakan aplikasi ini untuk menonton film bersama keluarga Anda. Kami akan terus berusaha untuk membuat aplikasi ini tetap menarik dan mudah digunakan untuk Anda.
+------------------------------------------------------------
+
+Review 3:
+Cons: - Bug on Netflix isn't allowing me to adjust brightness on my pixel phone using the in-app brightness slider bar. It's literally set on the max brightness and is burning Mt eyes. - Overpriced Pros: - Decent selection of media to view. Some of the Netflix originals are my fav shows!
+
+Sentiment: Negative (score=-0.500)
+
+Reply:
+Lamento saber que o ajuste de brilho para a tela do seu telefone Pixel está travado no aplicativo, especialmente quando você está assistindo ao Netflix. Vamos verificar se há alguma atualização ou configuração que possa resolver o problema e reduzir a intensidade do brilho para os seus olhos. Por favor, entre em contato conosco para que possamos ajudá-lo a encontrar uma solução.
+------------------------------------------------------------
+
+Review 4:
+love this aap I enjoyed every day ❤️ new movie n k dramas ❤️💞
+
+Sentiment: Positive (score=0.800)
+
+Reply:
+Khushi hui ki aapko hamari app pasand aayi hai! Aapko new movie aur k dramas khojne mein koi masla nhin to, shukria aapko apni sambhavnaon ka moka diya gaya hai. Hamein yah bataein agar aapke pass koi sawal ya shikayat hain.
+------------------------------------------------------------
+
+Review 5:
+good
+
+Sentiment: Positive (score=0.800)
+
+Reply:
+ÐŸ˜Š Fajn, že si si úžasný zážitek s naší aplikací! Čím se nám můžeme pokusit pomoci, abyste byli ještě spokojenější?
+------------------------------------------------------------
+
+Review 6:
+Every 40 minutes or so, the app disconnects from Chromecast when casting, and to reconnect I have to: 1) disconnect, 2) close the app, 3) open the app, 4) connect (it will "think", but never connect), 5) close the app, 6) open the app, 6) connect. It's a huge pain, and somehow, this bug has not been fixed for over 6 months.
+
+Sentiment: Negative (score=-0.500)
+
+Reply:
+Lo siento mucho por lo que estás experimentando. Nos gustaría ayudarte a resolver el problema con la desconexión del Chromecast. Por favor, necesitamos más información para que podamos investigar el problema y trabajar en una solución.
+------------------------------------------------------------
+
+Review 7:
+Every day it gets worse and worse, God forbid you wanna share your account with someone else to help shoulder the ridiculous cost. Shame on you netflix, you are greedy and inhuman.
+
+Sentiment: Negative (score=-0.500)
+
+Reply:
+We understand the frustration with the current cost structure making it difficult to share accounts, and we apologize for any burden this has caused.
+
+We'd like to inform you that we're exploring alternative plans to make our service more accessible and affordable for our users, including options for sharing accounts.
+
+Your feedback is valuable in helping us identify areas for improvement and we're committed to making Netflix more accessible and enjoyable for everyone.
+------------------------------------------------------------
+
+Review 8:
+Great shows & movies 🎬 as well ❗️No buffing at all ❗️I'm loving it 💯% 😉🤙🏾
+
+Sentiment: Positive (score=0.800)
+
+Reply:
+¡Genial que estés disfrutando de todos los contenidos en nuestra plataforma! Estamos felices de saber que estás experimentando una experiencia sin retrasos. ¡Gracias por elegirnos y que sigas disfrutando tus favoritos!
+------------------------------------------------------------
+
+Review 9:
+super
+
+Sentiment: Positive (score=0.800)
+
+Reply:
+Огромное спасибо за ваш положительный отзыв! Мы очень рады, что наш мобильный приложение вам понравилось. Мы продолжаем работать над улучшением его функций и надеемся, что вы продолжите использовать его и наслаждаться его преимуществами!
+------------------------------------------------------------
+
+Review 10:
+it often loses the episode im on, then i have to go through many episodes to finally figure out which one im on and watch 10 minutes of ads just going through the episodes to figure out where I left off. wont continue my subscription.
+
+Sentiment: Negative (score=-0.500)
+
+Reply:
+Estoy tan disculpo por la frustración que has experimentado con nuestro servicio. Entiendo que perder el episodio que estabas viendo puede ser muy inconveniente y molesto, así que voy a hablarte con nuestro desarrollo de producto para ver cómo podemos evitar que esto suceda en el futuro.
+------------------------------------------------------------
+

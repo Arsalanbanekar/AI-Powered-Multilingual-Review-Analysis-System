@@ -1,0 +1,8 @@
+
+streamlit
+google-play-scraper
+textblob
+openai
+python-dotenv
+pandas
+groq

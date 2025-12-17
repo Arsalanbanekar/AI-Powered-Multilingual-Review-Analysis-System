@@ -1,0 +1,110 @@
+Review 1:
+Ich bin langjähriger Netflix Kunde. also eigentlich recht zufrieden. Nun aber versuche icb seit 3 Monaten über die App mein Abo zu kündigen. Hat früher immer geklappt und ich konnte einfach mal was anders ausprobieren. Nun hat sich das Abo trotz Kündigung immer wieder verlängert. Werde diesmal am PC kündigen. Bin gespannt ob es dann endlich klappt. 22.11.25 NEIN. Es hat wieder nicht geklappt. könnte kotzen!
+
+Sentiment: Neutral (score=0.000)
+
+Reply:
+Thank you for taking the time to leave a review. If you have any specific suggestions on how we can improve the app, we’d love to hear them.
+
+Review: Ich bin langjähriger Netflix Kunde. also eigentlich recht zufrieden. Nun aber versuche icb seit 3 Monaten über die App mein Abo zu kündigen. Hat früher immer geklappt und ich konnte einfach mal was anders ausprobieren. Nun hat sich das Abo trotz Kündigung immer wieder verlängert. Werde diesmal am PC kündigen. Bin gespannt ob es dann endlich klappt. 22.11.25 NEIN. Es hat wieder nicht geklappt. könnte kotzen!
+------------------------------------------------------------
+
+Review 2:
+sagt die ganze Zeit das ich einen vpn verwende obwohl ich noch nie einen verwendet habe und keinen besitze und der Standardmäßige ist aus es dauert 30 min um eine Folge zu landen obwohl ich 500 Mbit/s habe
+
+Sentiment: Neutral (score=0.000)
+
+Reply:
+Thank you for taking the time to leave a review. If you have any specific suggestions on how we can improve the app, we’d love to hear them.
+
+Review: sagt die ganze Zeit das ich einen vpn verwende obwohl ich noch nie einen verwendet habe und keinen besitze und der Standardmäßige ist aus es dauert 30 min um eine Folge zu landen obwohl ich 500 Mbit/s habe
+------------------------------------------------------------
+
+Review 3:
+Wieso kann ich denn bitte die App nicht von meinem Handy deinstallieren?!?!
+
+Sentiment: Neutral (score=0.000)
+
+Reply:
+Thank you for taking the time to leave a review. If you have any specific suggestions on how we can improve the app, we’d love to hear them.
+
+Review: Wieso kann ich denn bitte die App nicht von meinem Handy deinstallieren?!?!
+------------------------------------------------------------
+
+Review 4:
+super
+
+Sentiment: Neutral (score=0.000)
+
+Reply:
+Thank you for taking the time to leave a review. If you have any specific suggestions on how we can improve the app, we’d love to hear them.
+
+Review: super
+------------------------------------------------------------
+
+Review 5:
+Ich habe eine Idee für ein 🙌 Ganz neues Konzept... Eine Streamingplattform die sich endlich mal MERKEN kann wo man aufgehört hat zu schauen... Ich weiß das scheint was neues für Manager von Netflix zu sein, aber das gab es tatsächlich auch schon als es Videokassetten gab. Man musste nicht suchen und vor und zurück Spulen um herauszufinden bei welcher Folge man tatsächlich zuletzt war. 👋🤯😱 das soll tatsächlich die Kundenzufriedenheit steigern...
+
+Sentiment: Neutral (score=0.000)
+
+Reply:
+Thank you for taking the time to leave a review. If you have any specific suggestions on how we can improve the app, we’d love to hear them.
+
+Review: Ich habe eine Idee für ein 🙌 Ganz neues Konzept... Eine Streamingplattform die sich endlich mal MERKEN kann wo man aufgehört hat zu schauen... Ich weiß das scheint was neues für Manager von Netflix zu sein, aber das gab es tatsächlich auch schon als es Videokassetten gab. Man musste nicht suchen und vor und zurück Spulen um herauszufinden bei welcher Folge man tatsächlich zuletzt war. 👋🤯😱 das soll tatsächlich die Kundenzufriedenheit steigern...
+------------------------------------------------------------
+
+Review 6:
+wenn ihr die Nanny holen würdet also die Serie dann hättet ihr 10000 Sterne verdient
+
+Sentiment: Neutral (score=0.000)
+
+Reply:
+Thank you for taking the time to leave a review. If you have any specific suggestions on how we can improve the app, we’d love to hear them.
+
+Review: wenn ihr die Nanny holen würdet also die Serie dann hättet ihr 10000 Sterne verdient
+------------------------------------------------------------
+
+Review 7:
+Hier werden nur noch Spiele angezeigt...Ich werde immer aus meinem Account rausgeworfen, ich soll meinen Haushalt aktualisieren.
+
+Sentiment: Neutral (score=0.000)
+
+Reply:
+Thank you for taking the time to leave a review. If you have any specific suggestions on how we can improve the app, we’d love to hear them.
+
+Review: Hier werden nur noch Spiele angezeigt...Ich werde immer aus meinem Account rausgeworfen, ich soll meinen Haushalt aktualisieren.
+------------------------------------------------------------
+
+Review 8:
+Seit dem letzten Update werden Filme immer wieder abgebrochen und lassen sich ab der Abbruchzeit auch nicht mehr anschauen. Bitte fixt das zeitnah, sonst macht ein Netflix-Abo keinen Sinn mehr.
+
+Sentiment: Neutral (score=0.000)
+
+Reply:
+Thank you for taking the time to leave a review. If you have any specific suggestions on how we can improve the app, we’d love to hear them.
+
+Review: Seit dem letzten Update werden Filme immer wieder abgebrochen und lassen sich ab der Abbruchzeit auch nicht mehr anschauen. Bitte fixt das zeitnah, sonst macht ein Netflix-Abo keinen Sinn mehr.
+------------------------------------------------------------
+
+Review 9:
+LG OLED Seitenformat nicht zu ändern, wann wird die Bevormundung mal angepasst damit man die dämlichen kleinen schwarzen Balken auch entfernen kann?
+
+Sentiment: Neutral (score=0.000)
+
+Reply:
+Thank you for taking the time to leave a review. If you have any specific suggestions on how we can improve the app, we’d love to hear them.
+
+Review: LG OLED Seitenformat nicht zu ändern, wann wird die Bevormundung mal angepasst damit man die dämlichen kleinen schwarzen Balken auch entfernen kann?
+------------------------------------------------------------
+
+Review 10:
+Nach 3 Folgen stoppt die Wiedergabe. Ist euch klar, dass eure Kunden mündige Bürger sind, die mit euch einen Vertrag schließen?
+
+Sentiment: Neutral (score=0.000)
+
+Reply:
+Thank you for taking the time to leave a review. If you have any specific suggestions on how we can improve the app, we’d love to hear them.
+
+Review: Nach 3 Folgen stoppt die Wiedergabe. Ist euch klar, dass eure Kunden mündige Bürger sind, die mit euch einen Vertrag schließen?
+------------------------------------------------------------
+
