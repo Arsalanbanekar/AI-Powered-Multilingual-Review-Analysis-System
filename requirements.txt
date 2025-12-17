@@ -6,3 +6,5 @@ openai
 python-dotenv
 pandas
 groq
+beautifulsoup4
+requests
