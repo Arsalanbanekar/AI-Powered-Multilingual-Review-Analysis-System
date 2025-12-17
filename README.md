@@ -24,3 +24,13 @@ to user reviews.
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
+
+
+
+## 🌐 Live Demo
+https://app-review-assistant-arsalanbanekar.streamlit.app
+
+## 🧪 How to Test
+- Google Play mode: try “Netflix”, 10–20 reviews
+- Manual mode: paste mixed-language reviews
+- Change reply language and generate replies
