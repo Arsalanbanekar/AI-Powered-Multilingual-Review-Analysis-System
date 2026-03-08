@@ -1,4 +1,4 @@
-# 📱 App Review Assistant (AI-Powered)
+# 📱AI-Powered Multilingual Review Analysis System
 
 A Streamlit-based web application that fetches app reviews from Google Play,
 performs multilingual sentiment analysis, and generates polite AI-based replies
