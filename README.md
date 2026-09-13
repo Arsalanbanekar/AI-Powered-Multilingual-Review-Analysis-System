@@ -8,7 +8,7 @@ to user reviews.
 - Fetch reviews from Google Play using app name
 - Multilingual sentiment analysis (English, Hindi, German, etc.)
 - Sentiment categories: Positive, Neutral, Negative, Highly Negative
-- AI-generated responses in the same language as the review
+- AI-generated replies in a language you choose, independent of the review language
 - Manual review input option
 - Download replies as a text file
 
@@ -16,21 +16,32 @@ to user reviews.
 - Python
 - Streamlit
 - NLP
-- Rule-based + LLM-based sentiment analysis
+- Groq (LLaMA) for sentiment + replies, with a TextBlob/template offline fallback
 - Google Play Scraper
-- Groq / OpenAI (optional)
 
 ## ▶️ Run Locally
+
 ```bash
 pip install -r requirements.txt
+cp .env.example .env   # then add your GROQ_API_KEY
 streamlit run app.py
+```
 
+### Configuration
 
+`GROQ_API_KEY` is the only key required — it powers both sentiment analysis and
+reply generation. Without it the app still runs, falling back to TextBlob
+scoring and static English reply templates, and the UI will tell you when that
+happens.
 
 ## 🌐 Live Demo
 https://app-review-assistant-arsalanbanekar.streamlit.app
 
 ## 🧪 How to Test
-- Google Play mode: try “Netflix”, 10–20 reviews
+- Google Play mode: try "Netflix", 10–20 reviews
 - Manual mode: paste mixed-language reviews
-- Change reply language and generate replies
+- Change the reply language and generate replies
+
+```bash
+python -m pytest tests/ -v
+```
