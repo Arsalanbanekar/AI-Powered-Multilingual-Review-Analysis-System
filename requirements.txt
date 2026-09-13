@@ -1,10 +1,9 @@
-
-streamlit
-google-play-scraper
-textblob
-openai
-python-dotenv
-pandas
-groq
-beautifulsoup4
-requests
+# Pinned so hosted rebuilds cannot pull a breaking upstream release.
+streamlit==1.63.0
+google-play-scraper==1.2.7
+textblob==0.20.1
+python-dotenv==1.2.1
+pandas==3.0.5
+groq==0.36.0
+beautifulsoup4==4.15.0
+requests==2.33.0

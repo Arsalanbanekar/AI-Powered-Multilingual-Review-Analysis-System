@@ -1,345 +1,87 @@
+"""App Review Assistant - fetch Play Store reviews, analyse sentiment, draft replies."""
 
-# import streamlit as st
-# import pandas as pd
-# import os
-# print("API KEY FOUND:", bool(os.getenv("OPENAI_API_KEY")))
+import logging
 
-
-# from src.reviews.playstore_fetcher import fetch_playstore_reviews
-# from src.models.sentiment_model import analyze_sentiments
-# from src.llm.reply_generator import generate_reply
-# from src.utils.file_generator import save_replies_to_txt
-
-# st.set_page_config(page_title="App Review Assistant", layout="wide")
-
-# st.title("📱 App Review Assistant")
-# st.write("Analyze app reviews from Google Play or paste your own reviews, then generate polite AI replies.")
-
-# mode = st.selectbox(
-#     "Select input method",
-#     ["Google Play (Android app)", "Manual paste"]
-# )
-
-# reviews = []
-
-# if mode == "Google Play (Android app)":
-#     pkg = st.text_input("Enter Android app package name (e.g., com.whatsapp, com.instagram.android)")
-#     col1, col2 = st.columns(2)
-#     with col1:
-#         limit = st.number_input("Number of reviews to fetch", min_value=5, max_value=200, value=20, step=5)
-#     with col2:
-#         lang = st.text_input("Language code", value="en")
-#     country = st.text_input("Country code", value="in")
-
-#     if st.button("Fetch & Analyze"):
-#         if not pkg.strip():
-#             st.error("Please enter a valid app package name.")
-#         else:
-#             with st.spinner("Fetching reviews from Google Play..."):
-#                 try:
-#                     reviews = fetch_playstore_reviews(pkg.strip(), int(limit), lang=lang.strip(), country=country.strip())
-#                 except Exception as e:
-#                     st.error(f"Failed to fetch reviews: {e}")
-#                     reviews = []
-
-#         if not reviews:
-#             st.warning("No reviews fetched. Try a different app, language, or country.")
-#         else:
-#             st.success(f"Fetched {len(reviews)} reviews.")
-# elif mode == "Manual paste":
-#     raw = st.text_area(
-#         "Paste reviews here (one review per line)",
-#         height=200,
-#         placeholder="This app is amazing!\nCrashes every time I open it.\nUI is okay but could be better."
-#     )
-#     if st.button("Analyze pasted reviews"):
-#         lines = [r.strip() for r in raw.split("\n") if r.strip()]
-#         if not lines:
-#             st.error("Please paste at least one review.")
-#         else:
-#             reviews = lines
-#             st.success(f"Loaded {len(reviews)} reviews from pasted text.")
-
-# # If we have reviews, run analysis block
-# if reviews:
-#     with st.spinner("Running sentiment analysis..."):
-#         sentiments, scores = analyze_sentiments(reviews)
-
-#     df = pd.DataFrame({
-#         "review": reviews,
-#         "sentiment": sentiments,
-#         "score": scores,
-#     })
-
-#     st.subheader("Sentiment summary")
-#     st.write(df["sentiment"].value_counts())
-
-#     st.subheader("Sample reviews")
-#     for i, row in df.head(5).iterrows():
-#         st.markdown(f"**Review {i+1} — {row['sentiment']} ({row['score']:.2f})**")
-#         st.caption(row["review"])
-
-#     st.subheader("Generate AI replies")
-#     st.info("If your OPENAI_API_KEY is set, replies will be generated using GPT-4.1-mini. Otherwise, a simple template reply is used as fallback.")
-
-#     if st.button("Generate replies for all reviews"):
-#         with st.spinner("Generating replies..."):
-#             replies = [generate_reply(r, s) for r, s in zip(reviews, sentiments)]
-#         df["reply"] = replies
-
-#         st.success("Replies generated.")
-#         st.dataframe(df.head(20))
-
-#         filename = "app_reviews_with_replies.txt"
-#         path = save_replies_to_txt("app_reviews", reviews, sentiments, scores, replies)
-#         with open(path, "r", encoding="utf-8") as f:
-#             st.download_button(
-#                 "📥 Download all replies as .txt",
-#                 data=f.read(),
-#                 file_name=filename,
-#                 mime="text/plain"
-#             )
-
-
-
-# import streamlit as st
-# import pandas as pd
-# from src.reviews.playstore_fetcher import fetch_playstore_reviews
-# from src.models.sentiment_model import analyze_sentiments
-# from src.llm.reply_generator import generate_reply
-# from src.utils.file_generator import save_replies_to_txt
-# from src.reviews.package_lookup import get_package_from_app_name
-
-# import os
-
-# st.set_page_config(page_title="App Review Assistant", layout="wide")
-
-# st.title("📱 App Review Assistant")
-# st.write("Analyze app reviews from Google Play or paste your own reviews, then generate polite AI replies.")
-
-# # --- DEBUG (you added this earlier, optional) ---
-# # st.write("API KEY FOUND:", bool(os.getenv("OPENAI_API_KEY")))
-# st.write("GROQ KEY FOUND:", bool(os.getenv("GROQ_API_KEY")))
-# # ------------------------------------------------
-
-# # Initialize session state for reviews
-# if "reviews" not in st.session_state:
-#     st.session_state["reviews"] = []
-
-# mode = st.selectbox(
-#     "Select input method",
-#     ["Google Play (Android app)", "Manual paste"]
-# )
-
-# # ---------- INPUT SECTION ----------
-# # if mode == "Google Play (Android app)":
-# #     pkg = st.text_input("Enter Android app package name (e.g., com.whatsapp, com.instagram.android)")
-# #     col1, col2 = st.columns(2)
-# #     with col1:
-# #         limit = st.number_input("Number of reviews to fetch", min_value=5, max_value=200, value=20, step=5)
-# #     with col2:
-# #         lang = st.text_input("Language code", value="en")
-# #     country = st.text_input("Country code", value="in")
-
-# #     if st.button("Fetch & Analyze"):
-# #         if not pkg.strip():
-# #             st.error("Please enter a valid app package name.")
-# #         else:
-# #             with st.spinner("Fetching reviews from Google Play..."):
-# #                 try:
-# #                     reviews = fetch_playstore_reviews(pkg.strip(), int(limit), lang=lang.strip(), country=country.strip())
-# #                 except Exception as e:
-# #                     st.error(f"Failed to fetch reviews: {e}")
-# #                     reviews = []
-
-# #             if not reviews:
-# #                 st.warning("No reviews fetched. Try a different app, language, or country.")
-# #             else:
-# #                 st.session_state["reviews"] = reviews
-# #                 st.success(f"Fetched {len(reviews)} reviews.")
-
-# if mode == "Google Play (Android app)":
-#     app_name = st.text_input("Enter App Name (e.g., Netflix, WhatsApp, Instagram)")
-#     col1, col2 = st.columns(2)
-#     with col1:
-#         limit = st.number_input("Number of reviews to fetch", min_value=5, max_value=200, value=20, step=5)
-#     with col2:
-#         lang = st.text_input("Language code", value="en")
-#     country = st.text_input("Country code", value="in")
-
-#     if st.button("Fetch & Analyze"):
-#         if not app_name.strip():
-#             st.error("Please enter a valid app name.")
-#         else:
-#             # 1) Resolve app name -> package id
-#             with st.spinner("Searching app on Google Play..."):
-#                 pkg = get_package_from_app_name(app_name.strip(), lang=lang.strip(), country=country.strip())
-
-#             if not pkg:
-#                 st.error("Could not find any app with that name. Try a different name or adjust language/country.")
-#             else:
-#                 st.info(f"Using package: {pkg}")
-#                 # 2) Fetch reviews using the resolved package id
-#                 with st.spinner("Fetching reviews from Google Play..."):
-#                     try:
-#                         reviews = fetch_playstore_reviews(pkg, int(limit), lang=lang.strip(), country=country.strip())
-#                     except Exception as e:
-#                         st.error(f"Failed to fetch reviews: {e}")
-#                         reviews = []
-
-#                 if not reviews:
-#                     st.warning("No reviews fetched. Try a different app, language, or country.")
-#                 else:
-#                     st.session_state["reviews"] = reviews
-#                     st.success(f"Fetched {len(reviews)} reviews.")
-
-
-# # elif mode == "Manual paste":
-# #     raw = st.text_area(
-# #         "Paste reviews here (one review per line)",
-# #         height=200,
-# #         placeholder="This app is amazing!\nCrashes every time I open it.\nUI is okay but could be better."
-# #     )
-# #     if st.button("Analyze pasted reviews"):
-# #         lines = [r.strip() for r in raw.split("\n") if r.strip()]
-# #         if not lines:
-# #             st.error("Please paste at least one review.")
-# #         else:
-# #             st.session_state["reviews"] = lines
-# #             st.success(f"Loaded {len(lines)} reviews from pasted text.")
-
-# elif mode == "Manual paste":
-#     raw = st.text_area(
-#         "Paste reviews here (one review per line)",
-#         height=200,
-#         placeholder="This app is amazing!\nCrashes every time I open it.\nUI is okay but could be better."
-#     )
-
-#     # NEW: reply language dropdown for manual paste mode
-#     reply_lang_manual = st.selectbox(
-#         "Select reply language (for AI replies)",
-#         ["en", "hi", "de", "fr", "es"],
-#         index=0,
-#     )
-#     # store it so we can use it later when generating replies
-#     st.session_state["reply_lang"] = reply_lang_manual
-
-#     if st.button("Analyze pasted reviews"):
-#         lines = [r.strip() for r in raw.split("\n") if r.strip()]
-#         if not lines:
-#             st.error("Please paste at least one review.")
-#         else:
-#             st.session_state["reviews"] = lines
-#             st.success(f"Loaded {len(lines)} reviews from pasted text.")
-
-
-# # ---------- ANALYSIS + REPLY SECTION ----------
-# reviews = st.session_state["reviews"]
-
-# if reviews:
-#     # Sentiment analysis
-#     sentiments, scores = analyze_sentiments(reviews)
-
-#     df = pd.DataFrame({
-#         "review": reviews,
-#         "sentiment": sentiments,
-#         "score": scores,
-#     })
-
-#     st.subheader("Sentiment summary")
-#     st.write(df["sentiment"].value_counts())
-
-#     st.subheader("Sample reviews")
-#     for i, row in df.head(5).iterrows():
-#         st.markdown(f"**Review {i+1} — {row['sentiment']} ({row['score']:.2f})**")
-#         st.caption(row["review"])
-
-#     st.subheader("Generate AI replies")
-#     st.info( "If your GROQ_API_KEY is set, replies will be generated using Groq (LLaMA models). "
-#         "Otherwise, a simple fallback reply template is used.")
-
-#     # if st.button("Generate replies for all reviews"):
-#     #     with st.spinner("Generating replies..."):
-#     #         replies = [generate_reply(r, s) for r, s in zip(reviews, sentiments)]
-#     # if st.button("Generate replies for all reviews"):
-#     #  with st.spinner("Generating replies..."):
-#     #     replies = [generate_reply(r, s, lang) for r, s in zip(reviews, sentiments)]
-#     #     df["reply"] = replies
-#     if st.button("Generate replies for all reviews"):
-#     # Use reply language from session; default to English if not set
-#        reply_lang = st.session_state.get("reply_lang", "en")
-
-#     with st.spinner("Generating replies..."):
-#         replies = [generate_reply(r, s, reply_lang) for r, s in zip(reviews, sentiments)]
-
-
-#         st.success("Replies generated.")
-#         st.dataframe(df.head(20))
-
-#         filename = "app_reviews_with_replies.txt"
-#         path = save_replies_to_txt("app_reviews", reviews, sentiments, scores, replies)
-#         with open(path, "r", encoding="utf-8") as f:
-#             st.download_button(
-#                 "📥 Download all replies as .txt",
-#                 data=f.read(),
-#                 file_name=filename,
-#                 mime="text/plain"
-#             )
-# else:
-#     st.info("Fetch or paste reviews above to begin.")
-
-
-
-
-
-import streamlit as st
 import pandas as pd
-import os
+import streamlit as st
+from dotenv import load_dotenv
 
-from src.reviews.playstore_fetcher import fetch_playstore_reviews
-from src.models.sentiment_model import analyze_sentiments
-from src.llm.reply_generator import generate_reply
-from src.utils.file_generator import save_replies_to_txt
+from src.llm.reply_generator import METHOD_TEMPLATE, generate_reply
+from src.models.sentiment_model import METHOD_TEXTBLOB, analyze_sentiments
 from src.reviews.package_lookup import get_package_from_app_name
+from src.reviews.playstore_fetcher import fetch_playstore_reviews
+from src.utils.file_generator import build_report, build_report_filename
 
-# ----------------- PAGE CONFIG -----------------
+load_dotenv()
+logging.basicConfig(level=logging.INFO)
+
+PLAY_MODE = "Google Play (Android app)"
+MANUAL_MODE = "Manual paste"
+
+# Languages offered for the generated replies.
+REPLY_LANGUAGES = ["en", "hi", "de", "fr", "es"]
+
 st.set_page_config(page_title="App Review Assistant", layout="wide")
 
 st.title("📱 App Review Assistant")
-st.write("Analyze app reviews from Google Play or paste your own reviews, then generate polite AI replies.")
-
-# Debug info for Groq key
-st.write("GROQ KEY FOUND:", bool(os.getenv("GROQ_API_KEY")))
-
-# ----------------- SESSION INIT -----------------
-if "reviews" not in st.session_state:
-    st.session_state["reviews"] = []
-
-if "reply_lang" not in st.session_state:
-    st.session_state["reply_lang"] = "en"
-
-# ----------------- MODE SELECT -----------------
-mode = st.selectbox(
-    "Select input method",
-    ["Google Play (Android app)", "Manual paste"]
+st.write(
+    "Analyze app reviews from Google Play or paste your own reviews, "
+    "then generate polite AI replies."
 )
 
+# ----------------- SESSION INIT -----------------
+st.session_state.setdefault("reviews", [])
+st.session_state.setdefault("reply_lang", "en")
+st.session_state.setdefault("replies", None)
+st.session_state.setdefault("replies_key", None)
+st.session_state.setdefault("mode", PLAY_MODE)
+
+
+def reset_results() -> None:
+    """Drop analysed output so stale replies never outlive their reviews."""
+    st.session_state["replies"] = None
+    st.session_state["replies_key"] = None
+
+
+@st.cache_data(show_spinner=False)
+def cached_analyze(reviews: tuple):
+    """Cache sentiment by review content.
+
+    Streamlit reruns this script on every widget interaction, so without this
+    every keystroke re-classified every review - one API call per review, per
+    interaction.
+    """
+    return analyze_sentiments(list(reviews))
+
+
+# ----------------- MODE SELECT -----------------
+mode = st.selectbox("Select input method", [PLAY_MODE, MANUAL_MODE])
+
+if mode != st.session_state["mode"]:
+    # Switching modes used to leave the previous batch in session state, which
+    # then got re-analysed under the new mode's settings.
+    st.session_state["mode"] = mode
+    st.session_state["reviews"] = []
+    reset_results()
+
 # ----------------- INPUT SECTION -----------------
-if mode == "Google Play (Android app)":
+if mode == PLAY_MODE:
     app_name = st.text_input("Enter App Name (e.g., Netflix, WhatsApp, Instagram)")
-    col1, col2 = st.columns(2)
+
+    col1, col2, col3 = st.columns(3)
     with col1:
         limit = st.number_input(
-            "Number of reviews to fetch",
-            min_value=5,
-            max_value=200,
-            value=20,
-            step=5
+            "Number of reviews to fetch", min_value=5, max_value=200, value=20, step=5
         )
     with col2:
-        lang = st.text_input("Language code (for reviews & replies)", value="en")
-        # store reply language for later use
-        st.session_state["reply_lang"] = lang
+        # Which reviews to fetch from the store.
+        lang = st.selectbox("Review language", REPLY_LANGUAGES, index=0)
+    with col3:
+        # Independent of the fetch language, so you can read English reviews
+        # and answer in Hindi.
+        st.session_state["reply_lang"] = st.selectbox(
+            "Reply language", REPLY_LANGUAGES, index=0
+        )
 
     country = st.text_input("Country code", value="in")
 
@@ -347,52 +89,52 @@ if mode == "Google Play (Android app)":
         if not app_name.strip():
             st.error("Please enter a valid app name.")
         else:
-            # 1) Resolve app name -> package id
             with st.spinner("Searching app on Google Play..."):
                 pkg = get_package_from_app_name(
-                    app_name.strip(),
-                    lang=lang.strip(),
-                    country=country.strip()
+                    app_name.strip(), lang=lang.strip(), country=country.strip()
                 )
 
             if not pkg:
-                st.error("Could not find any app with that name. Try a different name or adjust language/country.")
+                st.error(
+                    "Could not find any app with that name. "
+                    "Try a different name or adjust language/country."
+                )
             else:
                 st.info(f"Using package: {pkg}")
-
-                # 2) Fetch reviews using the resolved package id
+                reviews = []
                 with st.spinner("Fetching reviews from Google Play..."):
                     try:
                         reviews = fetch_playstore_reviews(
                             pkg,
                             int(limit),
                             lang=lang.strip(),
-                            country=country.strip()
+                            country=country.strip(),
                         )
-                    except Exception as e:
-                        st.error(f"Failed to fetch reviews: {e}")
-                        reviews = []
+                    except Exception as exc:
+                        st.error(f"Failed to fetch reviews: {exc}")
 
                 if not reviews:
-                    st.warning("No reviews fetched. Try a different app, language, or country.")
+                    st.warning(
+                        "No reviews fetched. Try a different app, language, or country."
+                    )
                 else:
                     st.session_state["reviews"] = reviews
+                    reset_results()
                     st.success(f"Fetched {len(reviews)} reviews.")
 
-elif mode == "Manual paste":
+elif mode == MANUAL_MODE:
     raw = st.text_area(
         "Paste reviews here (one review per line)",
         height=200,
-        placeholder="This app is amazing!\nCrashes every time I open it.\nUI is okay but could be better."
+        placeholder=(
+            "This app is amazing!\nCrashes every time I open it.\n"
+            "UI is okay but could be better."
+        ),
     )
 
-    # Reply language control just for manual mode
-    reply_lang_manual = st.selectbox(
-        "Select reply language (for AI replies)",
-        ["en", "hi", "de", "fr", "es"],
-        index=0,
+    st.session_state["reply_lang"] = st.selectbox(
+        "Select reply language (for AI replies)", REPLY_LANGUAGES, index=0
     )
-    st.session_state["reply_lang"] = reply_lang_manual
 
     if st.button("Analyze pasted reviews"):
         lines = [r.strip() for r in raw.split("\n") if r.strip()]
@@ -400,54 +142,94 @@ elif mode == "Manual paste":
             st.error("Please paste at least one review.")
         else:
             st.session_state["reviews"] = lines
+            reset_results()
             st.success(f"Loaded {len(lines)} reviews from pasted text.")
 
 # ----------------- ANALYSIS + REPLY SECTION -----------------
 reviews = st.session_state["reviews"]
 
-if reviews:
-    # Sentiment analysis
-    sentiments, scores = analyze_sentiments(reviews)
+if not reviews:
+    st.info("Fetch or paste reviews above to begin.")
+    st.stop()
 
-    df = pd.DataFrame({
+try:
+    with st.spinner("Analyzing sentiment..."):
+        sentiments, scores, methods = cached_analyze(tuple(reviews))
+except Exception as exc:
+    st.error(f"Sentiment analysis failed: {exc}")
+    st.stop()
+
+degraded = sum(1 for m in methods if m == METHOD_TEXTBLOB)
+if degraded:
+    st.warning(
+        f"{degraded} of {len(methods)} reviews fell back to offline TextBlob "
+        "scoring (Groq unavailable or rate limited). Those rows are less "
+        "accurate on non-English reviews."
+    )
+
+df = pd.DataFrame(
+    {
         "review": reviews,
         "sentiment": sentiments,
         "score": scores,
-    })
+        "engine": methods,
+    }
+)
 
-    st.subheader("Sentiment summary")
-    st.write(df["sentiment"].value_counts())
+st.subheader("Sentiment summary")
+st.write(df["sentiment"].value_counts())
 
-    st.subheader("Sample reviews")
-    for i, row in df.head(5).iterrows():
-        st.markdown(f"**Review {i+1} — {row['sentiment']} ({row['score']:.2f})**")
-        st.caption(row["review"])
+st.subheader("Sample reviews")
+for i, row in df.head(5).iterrows():
+    st.markdown(f"**Review {i + 1} - {row['sentiment']} ({row['score']:.2f})**")
+    st.caption(row["review"])
 
-    st.subheader("Generate AI replies")
-    st.info(
-        "If your GROQ_API_KEY is set, replies will be generated using Groq (LLaMA models). "
-        "Otherwise, a simple fallback reply template is used."
+st.subheader("Generate AI replies")
+st.info(
+    "If your GROQ_API_KEY is set, replies will be generated using Groq (LLaMA models). "
+    "Otherwise, a simple fallback reply template is used."
+)
+
+reply_lang = st.session_state["reply_lang"]
+current_key = (tuple(reviews), reply_lang)
+
+if st.button("Generate replies for all reviews"):
+    with st.spinner("Generating replies..."):
+        generated = [
+            generate_reply(r, s, reply_lang) for r, s in zip(reviews, sentiments)
+        ]
+    # Persist in session state so clicking download (which triggers a rerun)
+    # no longer discards the replies.
+    st.session_state["replies"] = generated
+    st.session_state["replies_key"] = current_key
+    st.success("Replies generated.")
+
+if st.session_state["replies"] and st.session_state["replies_key"] == current_key:
+    replies = [text for text, _ in st.session_state["replies"]]
+    reply_methods = [method for _, method in st.session_state["replies"]]
+
+    templated = sum(1 for m in reply_methods if m == METHOD_TEMPLATE)
+    if templated:
+        st.warning(
+            f"{templated} of {len(reply_methods)} replies used the static English "
+            "template because Groq was unavailable or rate limited."
+        )
+
+    df["reply"] = replies
+    st.dataframe(df.head(20))
+
+    st.download_button(
+        "📥 Download all replies as .txt",
+        data=build_report(
+            reviews,
+            sentiments,
+            scores,
+            replies,
+            sentiment_methods=methods,
+            reply_methods=reply_methods,
+        ),
+        file_name=build_report_filename("app_reviews"),
+        mime="text/plain",
     )
-
-    if st.button("Generate replies for all reviews"):
-        # Use reply language from session; default to English if not set
-        reply_lang = st.session_state.get("reply_lang", "en")
-
-        with st.spinner("Generating replies..."):
-            replies = [generate_reply(r, s, reply_lang) for r, s in zip(reviews, sentiments)]
-        df["reply"] = replies
-
-        st.success("Replies generated.")
-        st.dataframe(df.head(20))
-
-        filename = "app_reviews_with_replies.txt"
-        path = save_replies_to_txt("app_reviews", reviews, sentiments, scores, replies)
-        with open(path, "r", encoding="utf-8") as f:
-            st.download_button(
-                "📥 Download all replies as .txt",
-                data=f.read(),
-                file_name=filename,
-                mime="text/plain"
-            )
-else:
-    st.info("Fetch or paste reviews above to begin.")
+elif st.session_state["replies"]:
+    st.info("Reviews or reply language changed - generate replies again.")
