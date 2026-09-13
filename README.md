@@ -35,7 +35,7 @@ scoring and static English reply templates, and the UI will tell you when that
 happens.
 
 ## 🌐 Live Demo
-https://app-review-assistant-arsalanbanekar.streamlit.app
+https://app-review-assistant-etwwrdzitudxlpjpdcfjd6.streamlit.app
 
 ## 🧪 How to Test
 - Google Play mode: try "Netflix", 10–20 reviews
